@@ -27,19 +27,19 @@ namespace our {
         bool link() const;
 
         void use() { 
-            //TODO: call opengl to use the program identified by this->program
+            //TODO (ZAKA:DONE): call opengl to use the program identified by this->program
             glUseProgram(this->program);
         }
 
         GLuint getUniformLocation(const std::string &name) {
-            //TODO: call opengl to get the uniform location for the uniform defined by name from this->program
+            //TODO (ZAKA:DONE): call opengl to get the uniform location for the uniform defined by name from this->program
 
             //c_str() returns a null terminated string array that represents the string it was called from
             return glGetUniformLocation(this->program,name.c_str());
         }
 
         void set(const std::string &uniform, GLfloat value) {
-            //TODO: call opengl to set the value to the uniform defined by name
+            // (ZAKA:DONE): call opengl to set the value to the uniform defined by name
 
             //NOT SURE
             // glUniform1f requires the uniform location and the value to be set

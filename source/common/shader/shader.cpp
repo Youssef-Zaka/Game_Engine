@@ -33,14 +33,14 @@ bool our::ShaderProgram::attach(const std::string &filename, GLenum type) const 
 
     GLuint shaderID = glCreateShader(type);
 
-    //TODO: send the source code to the shader and compile it
+    //TODO (ZAKA:DONE): send the source code to the shader and compile it
 
     //Shader source takes in shader Id, number of strings in source code,the source code, and length chars 
     // since we have 1 string, thus we set length to null 
     glShaderSource(shaderID, 1,&sourceCStr,nullptr);
     
     // Here we check for compilation errors
-    //TODO: Uncomment this if block
+    //TODO (ZAKA:DONE): Uncomment this if block
     if(std::string error = checkForShaderCompilationErrors(shaderID); error.size() != 0){
         std::cerr << "ERROR IN " << filename << std::endl;
         std::cerr << error << std::endl;

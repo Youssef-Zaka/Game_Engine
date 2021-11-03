@@ -15,7 +15,7 @@ namespace glm {
 class FullscreenTriangleState: public our::State {
     
     our::ShaderProgram program;
-    //TODO: Add a variable in which we will store the name (ID) for a vertex array
+    //TODO (ZAKA:DONE): Add a variable in which we will store the name (ID) for a vertex array
     GLuint vertexArray;
 
     // onInitialize() function is called once before the state starts
@@ -54,7 +54,7 @@ class FullscreenTriangleState: public our::State {
             }
         }
 
-        //TODO: Create a vertex Array
+        //TODO (ZAKA:DONE): Create a vertex Array
         glGenVertexArrays(1, &vertexArray);
         glBindVertexArray(vertexArray);
 
@@ -72,7 +72,7 @@ class FullscreenTriangleState: public our::State {
 
     // onInitialize() function is called once after the state ends
     void onDestroy() override {
-        //TODO: Delete the vertex Array
+        //TODO (ZAKA:DONE): Delete the vertex Array
         glDeleteVertexArrays(1, &vertexArray);
     }
 };
