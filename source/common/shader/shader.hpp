@@ -29,6 +29,7 @@ namespace our {
         void use() { 
             //TODO (ZAKA:DONE): call opengl to use the program identified by this->program
             glUseProgram(this->program);
+            
         }
 
         GLuint getUniformLocation(const std::string &name) {
