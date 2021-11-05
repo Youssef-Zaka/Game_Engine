@@ -67,7 +67,11 @@ class FullscreenTriangleState: public our::State {
         //At the start of frame we want to clear the screen. Otherwise we would still see the results from the previous frame.
         glClear(GL_COLOR_BUFFER_BIT);
 
-        //TODO: Draw a triangle using the vertex array and the program
+        //TODO(AMMAR:DONE): Draw a triangle using the vertex array and the program
+        //glUseProgram(program);
+        //program.use();
+        //glBindVertexArray(vertexArray);
+        glDrawArrays(GL_TRIANGLES, 0 , 3);
     }
 
     // onInitialize() function is called once after the state ends
