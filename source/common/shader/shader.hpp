@@ -19,7 +19,7 @@ namespace our {
         void create();
         void destroy();
 
-        ShaderProgram(){ program = 0; }
+        // ShaderProgram(){ program = 0; }
         ~ShaderProgram(){ destroy(); }
 
         bool attach(const std::string &filename, GLenum type) const;
@@ -29,6 +29,7 @@ namespace our {
         void use() { 
             //TODO (ZAKA:DONE): call opengl to use the program identified by this->program
             glUseProgram(this->program);
+            
         }
 
         GLuint getUniformLocation(const std::string &name) {
@@ -50,14 +51,17 @@ namespace our {
 
         void set(const std::string &uniform, glm::vec2 value) {
             //TODO: call opengl to set the value to the uniform defined by name
+            glUniform2f(getUniformLocation(uniform), value.x,value.y);
         }
 
         void set(const std::string &uniform, glm::vec3 value) {
             //TODO: call opengl to set the value to the uniform defined by name
+            glUniform3f(getUniformLocation(uniform), value.x,value.y,value.z);
         }
 
         void set(const std::string &uniform, glm::vec4 value) {
             //TODO: call opengl to set the value to the uniform defined by name
+            glUniform4f(getUniformLocation(uniform), value.x,value.y,value.z,value.w);
         }
 
 
