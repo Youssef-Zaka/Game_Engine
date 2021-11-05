@@ -19,7 +19,7 @@ namespace our {
         void create();
         void destroy();
 
-        // ShaderProgram(){ program = 0; }
+        //ShaderProgram(){ program = 0; }
         ~ShaderProgram(){ destroy(); }
 
         bool attach(const std::string &filename, GLenum type) const;
@@ -50,23 +50,30 @@ namespace our {
         }
 
         void set(const std::string &uniform, glm::vec2 value) {
-            //TODO: call opengl to set the value to the uniform defined by name
-            glUniform2f(getUniformLocation(uniform), value.x,value.y);
+            //TODO(AMMAR:DONE): call opengl to set the value to the uniform defined by name
+            glUniform2f(getUniformLocation(uniform), value.x, value.y);
         }
 
         void set(const std::string &uniform, glm::vec3 value) {
-            //TODO: call opengl to set the value to the uniform defined by name
-            glUniform3f(getUniformLocation(uniform), value.x,value.y,value.z);
+            //TODO(AMMAR:DONE): call opengl to set the value to the uniform defined by name
+            glUniform3f(getUniformLocation(uniform), value.x, value.y, value.z);
         }
 
         void set(const std::string &uniform, glm::vec4 value) {
-            //TODO: call opengl to set the value to the uniform defined by name
-            glUniform4f(getUniformLocation(uniform), value.x,value.y,value.z,value.w);
+            //TODO(AMMAR:DONE): call opengl to set the value to the uniform defined by name
+            glUniform4f(getUniformLocation(uniform), value.x, value.y, value.z, value.w);
+
         }
 
 
-        //TODO: Delete the copy constructor and assignment operator
+        //TODO(AMMAR:DONE): Delete the copy constructor and assignment operator
+
+
+
         //Question: Why do we do this? Hint: Look at the deconstructor
+
+        //AMMAR_ANS: BECAUSE THE DESTRUCTOR SETS THE PROGRAM TO 0 MEANING IT IS ILLOGICAL TO DO SO IN THE COPY CONSTRUCTOR
+
     };
 
 }
