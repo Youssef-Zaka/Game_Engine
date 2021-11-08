@@ -19,8 +19,10 @@ namespace our {
         void create();
         void destroy();
 
-        //ShaderProgram(){ program = 0; }
+        ShaderProgram(){ program = 0; }
         ~ShaderProgram(){ destroy(); }
+        ShaderProgram (const ShaderProgram & ) = delete;
+        ShaderProgram & operator= (const ShaderProgram &) = delete;
 
         bool attach(const std::string &filename, GLenum type) const;
 
