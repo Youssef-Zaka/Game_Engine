@@ -44,7 +44,7 @@ namespace our {
         void set(const std::string &uniform, GLfloat value) {
             // TODO: call opengl to set the value to the uniform defined by name
 
-            //NOT SURE
+
             // glUniform1f requires the uniform location and the value to be set
             // we can get the location using getUniformLocation()
             // after this function, the uniform defined by the passed in uniform name will be set to value
@@ -74,7 +74,7 @@ namespace our {
 
         //Question: Why do we do this? Hint: Look at the deconstructor
 
-        //BECAUSE THE DESTRUCTOR SETS THE PROGRAM TO 0 MEANING IT IS ILLOGICAL TO DO SO IN THE COPY CONSTRUCTOR
+        //To avoid shallow copy, and avoid deleting a shader that we use in other instances
 
     };
 
