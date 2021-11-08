@@ -33,14 +33,14 @@ bool our::ShaderProgram::attach(const std::string &filename, GLenum type) const 
 
     GLuint shaderID = glCreateShader(type);
 
-    //TODO (ZAKA:DONE): send the source code to the shader and compile it
+    // TODO: send the source code to the shader and compile it
 
     //Shader source takes in shader Id, number of strings in source code,the source code, and length chars 
     // since we have 1 string, thus we set length to null 
     glShaderSource(shaderID, 1,&sourceCStr,nullptr);
     glCompileShader(shaderID);
     // Here we check for compilation errors
-    //TODO (ZAKA:DONE): Uncomment this if block
+    //TODO: Uncomment this if block
     if(std::string error = checkForShaderCompilationErrors(shaderID); error.size() != 0){
         std::cerr << "ERROR IN " << filename << std::endl;
         std::cerr << error << std::endl;
@@ -49,10 +49,12 @@ bool our::ShaderProgram::attach(const std::string &filename, GLenum type) const 
     }
 
     
-    //TODO (AMMAR:Done): attach the shader to the program then delete the shader
+    //TODO: attach the shader to the program then delete the shader
 
     glAttachShader(program, shaderID);
     glDeleteShader(shaderID);
+
+    // attaching the program to both the vertex and the fragment shaders
 
 
     //We return true since the compilation succeeded
@@ -62,12 +64,14 @@ bool our::ShaderProgram::attach(const std::string &filename, GLenum type) const 
 
 
 bool our::ShaderProgram::link() const {
-    //TODO(AMMAR:DONE): call opengl to link the program identified by this->program 
+    //TODO: call opengl to link the program identified by this->program 
+
+    // linking the attached shaders with the program
 
     glLinkProgram(this->program);
 
     // Here we check for linking errors
-    //TODO(AMMAR:DONE): Uncomment this if block
+    //TODO: Uncomment this if block
      if(auto error = checkForLinkingErrors(program); error.size() != 0){
          std::cerr << "LINKING ERROR" << std::endl;
          std::cerr << error << std::endl;
@@ -83,9 +87,12 @@ bool our::ShaderProgram::link() const {
 
 std::string checkForShaderCompilationErrors(GLuint shader){
      //Check and return any error in the compilation process
+    
     GLint status;
     glGetShaderiv(shader, GL_COMPILE_STATUS, &status);
     if (!status) {
+        //std::cout<<"error in Compile\n";
+
         GLint length;
         glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &length);
         char *logStr = new char[length];
@@ -102,6 +109,8 @@ std::string checkForLinkingErrors(GLuint program){
     GLint status;
     glGetProgramiv(program, GL_LINK_STATUS, &status);
     if (!status) {
+        //std::cout<<"error in Link\n";
+
         GLint length;
         glGetProgramiv(program, GL_INFO_LOG_LENGTH, &length);
         char *logStr = new char[length];
